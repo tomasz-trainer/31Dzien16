@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using P08ShopWebApp.Client.Data;
+using System.Globalization;
 
 namespace P08ShopWebApp.Client
 {
@@ -9,6 +10,8 @@ namespace P08ShopWebApp.Client
         {
             var builder = WebApplication.CreateBuilder(args);
 
+          
+
             // Add services to the container.
             builder.Services.AddRazorPages();
 
@@ -17,9 +20,17 @@ namespace P08ShopWebApp.Client
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            var supportedCultures = new[] { new CultureInfo("en-US") };
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en-US");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+            });
+
 
             var app = builder.Build();
-
+            app.UseRequestLocalization();
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
@@ -30,6 +41,7 @@ namespace P08ShopWebApp.Client
 
             app.UseHttpsRedirection();
 
+       
             app.UseRouting();
 
             app.UseAuthorization();
