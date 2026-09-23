@@ -14,3 +14,7 @@ dotnet ef dbcontext scaffold "name=AzureDBConnection" Microsoft.EntityFrameworkC
 dotnet tool install --global dotnet-aspnet-codegenerator 
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet aspnet-codegenerator razorpage -m Product -dc ShopContext -udl -outDir Pages/ProductsAutoGen --referenceScriptLibraries
+
+
+
+dotnet ef dbcontext scaffold "Name=ConnectionStrings:DefaultConnection" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --context-dir Data --context ShopContext --force
