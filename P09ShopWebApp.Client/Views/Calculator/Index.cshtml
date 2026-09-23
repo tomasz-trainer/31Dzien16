@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<form method="post" action="/Calculator/Add">
+
+    <input type="text" name="number1" value="@ViewBag.Number1" />
+    <input type="text" name="number2" value="@ViewBag.Number2" />
+
+    <input type="submit" value="Add" />
+</form>
+
+<p>Result: @ViewBag.MyResult</p>
+
+<p>Result: @ViewData["MyResult2"]</p>
+
+<p class="text-danger">@ViewBag.ErrorMessage</p>

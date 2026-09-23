@@ -3,4 +3,5 @@
   <Project Path="P06Shop.Shared/P06Shop.Shared.csproj" />
   <Project Path="P07Shop.DataSeeder/P07Shop.DataSeeder.csproj" />
   <Project Path="P08ShopWebApp.Client/P08ShopWebApp.Client.csproj" Id="60d6643e-19bf-4a58-b41a-a2f35a584135" />
+  <Project Path="P09ShopWebApp.Client/P09ShopWebApp.Client.csproj" Id="43b5a0bc-a38a-4645-9eff-b76bd473e086" />
 </Solution>
