@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using P03WeatherForecastWPF.Client.Services;
+using P06Shop.Shared.Services.ProductService;
 using P10ShopWebAppMVC.Client.Data;
 using System.Globalization;
 
@@ -13,8 +15,13 @@ namespace P10ShopWebAppMVC.Client
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddDbContext<ShopContext>(options =>
-              options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            //builder.Services.AddDbContext<ShopContext>(options =>
+            //  options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddHttpClient<IProductService, ProductService>(client =>
+            {
+                client.BaseAddress = new Uri(builder.Configuration["ApiBaseUrl"]);
+            });
 
             var supportedCultures = new[] { new CultureInfo("en-US") };
             builder.Services.Configure<RequestLocalizationOptions>(options =>

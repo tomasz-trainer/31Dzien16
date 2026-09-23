@@ -9,7 +9,7 @@ using System.Text;
 
 namespace P03WeatherForecastWPF.Client.Services
 {
-    internal class ProductService : IProductService
+    public class ProductService : IProductService
     {
         private readonly HttpClient _httpClient;
 

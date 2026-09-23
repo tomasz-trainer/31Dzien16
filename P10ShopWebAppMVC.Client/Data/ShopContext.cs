@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using P06Shop.Shared;
 using P10ShopWebAppMVC.Client.Models;
 
 namespace P10ShopWebAppMVC.Client.Data;
