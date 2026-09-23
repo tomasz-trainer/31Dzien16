@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using P09ShopWebApp.Client.Data;
+using System.Globalization;
+
 namespace P09ShopWebApp.Client
 {
     public class Program
@@ -9,8 +13,19 @@ namespace P09ShopWebApp.Client
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            var app = builder.Build();
+            builder.Services.AddDbContext<ShopContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            var supportedCultures = new[] { new CultureInfo("en-US") };
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en-US");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+            });
+
+            var app = builder.Build();
+            app.UseRequestLocalization();
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
@@ -20,6 +35,9 @@ namespace P09ShopWebApp.Client
             }
 
             app.UseHttpsRedirection();
+
+            
+
             app.UseRouting();
 
             app.UseAuthorization();

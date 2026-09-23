@@ -18,3 +18,7 @@ dotnet aspnet-codegenerator razorpage -m Product -dc ShopContext -udl -outDir Pa
 
 
 dotnet ef dbcontext scaffold "Name=ConnectionStrings:DefaultConnection" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --context-dir Data --context ShopContext --force
+
+
+
+dotnet aspnet-codegenerator controller -name ProductsController -m Product -dc ShopContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
