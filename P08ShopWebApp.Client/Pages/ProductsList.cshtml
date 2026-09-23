@@ -4,15 +4,25 @@
 }
 
 
-<table>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
 
     @foreach (var product in Model.Products)
     {
         <tr>
             <td>@product.Id</td>
             <td>@product.Description</td>
-            <td>@product.Price</td>
+            <td>@Html.DisplayTextFor(x=>product.Price)</td>
         </tr>
     }
 
 </table>
+@* 
+cwiczenie: dodaj naglowki do tabeli  *@

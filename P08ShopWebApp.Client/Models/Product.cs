@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace P08ShopWebApp.Client.Models;
 
@@ -9,11 +10,12 @@ public partial class Product
 
     public string Title { get; set; } = null!;
 
+     
     public string Description { get; set; } = null!;
 
     public string Barcode { get; set; } = null!;
 
-    public decimal Price { get; set; }
+    public double Price { get; set; }
 
     public DateTime ReleaseDate { get; set; }
 }
