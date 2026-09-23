@@ -2,4 +2,9 @@
 dotnet add package Microsoft.EntityFrameworkCore.Design 
 dotnet add package Microsoft.EntityFrameworkCore.Tools
 
+dotnet tool install --global dotnet-ef 
+
+
 dotnet ef dbcontext scaffold "Data Source=(localdb)\mssqllocaldb;Initial Catalog=MySuperShop;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --context-dir Data --context ShopContext --force
+
+dotnet ef dbcontext scaffold "name=AzureDBConnection" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --context-dir Data --context ShopContext --force
