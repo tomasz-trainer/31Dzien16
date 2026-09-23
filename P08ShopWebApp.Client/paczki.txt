@@ -2,17 +2,24 @@
 dotnet add package Microsoft.EntityFrameworkCore.Design 
 dotnet add package Microsoft.EntityFrameworkCore.Tools
 
+
+globalne narzedzie CLI do migracji scaffoldingu :
 dotnet tool install --global dotnet-ef 
 
-
+feneruje encje z istniejacej bazy uzywajac podanego connection stringa 
 dotnet ef dbcontext scaffold "Data Source=(localdb)\mssqllocaldb;Initial Catalog=MySuperShop;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --context-dir Data --context ShopContext --force
  -- table Product (wskazuje , ktore tabele mapujemy) 
 
-
+ to samo co wyzej ale czyta connection string z appsettings.json
 dotnet ef dbcontext scaffold "name=AzureDBConnection" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --context-dir Data --context ShopContext --force
 
+instaluje globalne narzedzie do generowania kodu 
 dotnet tool install --global dotnet-aspnet-codegenerator 
+
+dodanie pakietu z szablonami do generowania kodu (razor pages, controllers, views)
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+
+generuje CRUD razor pages na podstawie modelu Product i db context ShopContext
 dotnet aspnet-codegenerator razorpage -m Product -dc ShopContext -udl -outDir Pages/ProductsAutoGen --referenceScriptLibraries
 
 
@@ -22,3 +29,5 @@ dotnet ef dbcontext scaffold "Name=ConnectionStrings:DefaultConnection" Microsof
 
 Generowanie UI na podstawie modelu "
 dotnet aspnet-codegenerator controller -name ProductsController -m Product -dc ShopContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+
+ 
