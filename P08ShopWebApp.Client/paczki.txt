@@ -6,5 +6,11 @@ dotnet tool install --global dotnet-ef
 
 
 dotnet ef dbcontext scaffold "Data Source=(localdb)\mssqllocaldb;Initial Catalog=MySuperShop;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --context-dir Data --context ShopContext --force
+ -- table Product (wskazuje , ktore tabele mapujemy) 
+
 
 dotnet ef dbcontext scaffold "name=AzureDBConnection" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --context-dir Data --context ShopContext --force
+
+dotnet tool install --global dotnet-aspnet-codegenerator 
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet aspnet-codegenerator razorpage -m Product -dc ShopContext -udl -outDir Pages/ProductsAutoGen --referenceScriptLibraries
