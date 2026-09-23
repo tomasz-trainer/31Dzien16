@@ -1,0 +1,18 @@
+﻿@page
+@model P08ShopWebApp.Client.Pages.ProductsListModel
+@{
+}
+
+
+<table>
+
+    @foreach (var product in Model.Products)
+    {
+        <tr>
+            <td>@product.Id</td>
+            <td>@product.Description</td>
+            <td>@product.Price</td>
+        </tr>
+    }
+
+</table>

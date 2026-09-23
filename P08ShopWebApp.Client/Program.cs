@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using P08ShopWebApp.Client.Data;
+
 namespace P08ShopWebApp.Client
 {
     public class Program
@@ -8,6 +11,12 @@ namespace P08ShopWebApp.Client
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+
+            builder.Services.AddDbContext<ShopContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+
 
             var app = builder.Build();
 
